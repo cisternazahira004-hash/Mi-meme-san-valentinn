@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Meme 💙</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #cce7ff, #e6f4ff);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-top: 20px;
+  color: #0077cc;
+}
+
+#contador {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #005fa3;
+}
+
+.galeria img {
+  width: 90%;
+  max-width: 300px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.corazon {
+  position: fixed;
+  color: rgba(0,150,255,0.4);
+  font-size: 20px;
+  animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Nuestra historia, mi meme 💙</h1>
+
+<div id="contador"></div>
+
+<div class="galeria">
+  <img src="FOTO1.jpg">
+  <img src="FOTO2.jpg">
+  <img src="FOTO3.jpg">
+  <img src="FOTO4.jpg">
+  <img src="FOTO5.jpg">
+  <img src="FOTO6.jpg">
+</div>
+
+<p style="padding:20px; color:#004c80;">
+Desde el 10 de julio de 2024 mi vida es más linda con vos.  
+Gracias por cada risa, cada abrazo y cada momento juntos.  
+Te elijo hoy y siempre 💙
+</p>
+
+<audio autoplay loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const fechaInicio = new Date("2024-07-10");
+const hoy = new Date();
+
+let años = hoy.getFullYear() - fechaInicio.getFullYear();
+let meses = hoy.getMonth() - fechaInicio.getMonth();
+let dias = hoy.getDate() - fechaInicio.getDate();
+
+if (dias < 0) {
+  meses--;
+  dias += 30;
+}
+if (meses < 0) {
+  años--;
+  meses += 12;
+}
+
+document.getElementById("contador").innerHTML =
+`Llevamos juntos: ${años} año(s), ${meses} mes(es) y ${dias} día(s) 💙`;
+
+function crearCorazon() {
+  const corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.innerHTML = "💙";
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}
+
+setInterval(crearCorazon, 500);
+</script>
+
+</body>
+</html>
